@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.30.0)
 
-set(CMAKE_CXX_STANDARD 23)
+set(CMAKE_CXX_STANDARD 26)
 
 if(CMAKE_VERSION VERSION_GREATER_EQUAL 3.30.0 AND CMAKE_VERSION VERSION_LESS_EQUAL 3.31.7)
     set(CMAKE_EXPERIMENTAL_CXX_IMPORT_STD "0e5b6991-d74f-4b3d-a41c-cf096e0b2508")
@@ -15,4 +15,16 @@ set(CMAKE_CXX_MODULE_STD 1)
 
 project(duration)
 
+find_package(Qt6 COMPONENTS
+        Core
+        Gui
+        Widgets
+        REQUIRED)
+
+
 add_subdirectory(src)
+target_link_libraries(${PROJECT_NAME}
+        Qt::Core
+        Qt::Gui
+        Qt::Widgets
+)
